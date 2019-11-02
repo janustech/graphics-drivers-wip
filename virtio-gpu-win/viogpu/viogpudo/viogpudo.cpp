@@ -66,6 +66,14 @@ BOOLEAN VioGpuDod::CheckHardware()
     return FALSE;
 }
 
+static void DumpDisplayInfo(const DXGK_DISPLAY_INFORMATION& info, LPCSTR proc, LPCSTR comment)
+{
+    DbgPrint(TRACE_LEVEL_INFORMATION, ("%s: %s %dx%d(fmt %d, pitch %d), @%I64x, %d-%d\n",
+        proc, comment,
+        info.Width, info.Height, info.ColorFormat, info.Pitch,
+        info.PhysicAddress.QuadPart, info.TargetId, info.AcpiId));
+}
+
 NTSTATUS VioGpuDod::StartDevice(_In_  DXGK_START_INFO*   pDxgkStartInfo,
                          _In_  DXGKRNL_INTERFACE* pDxgkInterface,
                          _Out_ ULONG*             pNumberOfViews,
@@ -135,6 +143,7 @@ NTSTATUS VioGpuDod::StartDevice(_In_  DXGK_START_INFO*   pDxgkStartInfo,
                            Status, m_CurrentModes[0].DispInfo.Width));
         return STATUS_UNSUCCESSFUL;
     }
+    m_InitialDisplayInfo = m_CurrentModes[0].DispInfo;
 /*
     if (m_CurrentModes[0].DispInfo.Width == 0)
     {
@@ -148,6 +157,8 @@ NTSTATUS VioGpuDod::StartDevice(_In_  DXGK_START_INFO*   pDxgkStartInfo,
         }
     }
 */
+    DumpDisplayInfo(m_CurrentModes[0].DispInfo, __FUNCTION__, "acquired from BDD");
+
     m_CurrentModes[0].DispInfo.Width = max(MIN_WIDTH_SIZE, m_CurrentModes[0].DispInfo.Width);
     m_CurrentModes[0].DispInfo.Height = max(MIN_HEIGHT_SIZE, m_CurrentModes[0].DispInfo.Height);
     m_CurrentModes[0].DispInfo.ColorFormat = D3DDDIFMT_A8R8G8B8;
@@ -156,9 +167,7 @@ NTSTATUS VioGpuDod::StartDevice(_In_  DXGK_START_INFO*   pDxgkStartInfo,
     if (PhysicAddress.QuadPart != 0LL) {
          m_CurrentModes[0].DispInfo.PhysicAddress.QuadPart = PhysicAddress.QuadPart;
     }
-
-    DbgPrint(TRACE_LEVEL_INFORMATION, ("<--- %s ColorFormat = %d\n", __FUNCTION__, m_CurrentModes[0].DispInfo.ColorFormat));
-
+    DumpDisplayInfo(m_CurrentModes[0].DispInfo, __FUNCTION__, "using");
    *pNumberOfViews = MAX_VIEWS;
    *pNumberOfChildren = MAX_CHILDREN;
     m_Flags.DriverStarted = TRUE;
@@ -402,7 +411,7 @@ NTSTATUS VioGpuDod::QueryAdapterInfo(_In_ CONST DXGKARG_QUERYADAPTERINFO* pQuery
                 pDriverCaps->PointerCaps.Color = 1;
                 pDriverCaps->PointerCaps.MaskedColor = 0;
             }
-            pDriverCaps->SupportNonVGA = (m_pHWDevice->GetType() == VGA_DEVICE);
+            pDriverCaps->SupportNonVGA = TRUE;
             pDriverCaps->SupportSmoothRotation = TRUE;
             DbgPrint(TRACE_LEVEL_VERBOSE, ("<--- %s 1\n", __FUNCTION__));
             return STATUS_SUCCESS;
@@ -515,6 +524,15 @@ NTSTATUS VioGpuDod::QueryInterface(_In_ CONST PQUERY_INTERFACE pQueryInterface)
     return STATUS_NOT_SUPPORTED;
 }
 
+void GpuDevice::SetFinalDisplayInfo(DXGK_DISPLAY_INFORMATION& info)
+{
+    CPciBar *bar0 = m_PciResources.GetPciBar(0);
+    if (bar0)
+    {
+        info.PhysicAddress = bar0->GetPA();
+    }
+}
+
 NTSTATUS VioGpuDod::StopDeviceAndReleasePostDisplayOwnership(_In_  D3DDDI_VIDEO_PRESENT_TARGET_ID TargetId,
                                                           _Out_ DXGK_DISPLAY_INFORMATION*      pDisplayInfo)
 {
@@ -534,7 +552,10 @@ NTSTATUS VioGpuDod::StopDeviceAndReleasePostDisplayOwnership(_In_  D3DDDI_VIDEO_
     // The driver has to black out the display and ensure it is visible when releasing ownership
     m_pHWDevice->BlackOutScreen(&m_CurrentModes[SourceId]);
 
-    *pDisplayInfo = m_CurrentModes[SourceId].DispInfo;
+    *pDisplayInfo = m_InitialDisplayInfo;
+    m_pHWDevice->SetFinalDisplayInfo(*pDisplayInfo);
+
+    DumpDisplayInfo(m_CurrentModes[0].DispInfo, __FUNCTION__, "returning");
 
     return StopDevice();
 }

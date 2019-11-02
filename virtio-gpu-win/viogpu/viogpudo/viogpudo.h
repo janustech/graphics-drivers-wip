@@ -195,6 +195,7 @@ public:
     VioGpuDod* GetVioGpu(void) {return m_pVioGpuDod;}
     virtual NTSTATUS AcquireFrameBuffer(CURRENT_BDD_MODE* pCurrentBddMode) = 0;
     virtual NTSTATUS ReleaseFrameBuffer(CURRENT_BDD_MODE* pCurrentBddMode) = 0;
+    virtual void SetFinalDisplayInfo(DXGK_DISPLAY_INFORMATION& info) = 0;
 protected:
     virtual NTSTATUS GetModeList(DXGK_DISPLAY_INFORMATION* pDispInfo) = 0;
 protected:
@@ -239,6 +240,7 @@ public:
     NTSTATUS SetPointerPosition(_In_ CONST DXGKARG_SETPOINTERPOSITION* pSetPointerPosition, _In_ CONST CURRENT_BDD_MODE* pModeCur);
     NTSTATUS AcquireFrameBuffer(CURRENT_BDD_MODE* pCurrentBddMode);
     NTSTATUS ReleaseFrameBuffer(CURRENT_BDD_MODE* pCurrentBddMode);
+    void SetFinalDisplayInfo(DXGK_DISPLAY_INFORMATION& info) { UNREFERENCED_PARAMETER(info); }
 protected:
     NTSTATUS GetModeList(DXGK_DISPLAY_INFORMATION* pDispInfo);
 private:
@@ -277,7 +279,7 @@ public:
     CPciResources* GetPciResources(void) { return &m_PciResources; }
     NTSTATUS AcquireFrameBuffer(CURRENT_BDD_MODE* pCurrentBddMode) { UNREFERENCED_PARAMETER(pCurrentBddMode);  return STATUS_SUCCESS; }
     NTSTATUS ReleaseFrameBuffer(CURRENT_BDD_MODE* pCurrentBddMode) { UNREFERENCED_PARAMETER(pCurrentBddMode);  return STATUS_SUCCESS; }
-
+    void SetFinalDisplayInfo(DXGK_DISPLAY_INFORMATION& info);
 protected:
 private:
     NTSTATUS GpuDeviceInit(DXGK_DISPLAY_INFORMATION* pDispInfo);
@@ -335,6 +337,7 @@ private:
     D3DDDI_VIDEO_PRESENT_SOURCE_ID m_SystemDisplaySourceId;
     DXGKARG_SETPOINTERSHAPE m_PointerShape;
     HwDeviceInterface* m_pHWDevice;
+    DXGK_DISPLAY_INFORMATION m_InitialDisplayInfo;
 public:
     VioGpuDod(_In_ DEVICE_OBJECT* pPhysicalDeviceObject);
     ~VioGpuDod(void);
