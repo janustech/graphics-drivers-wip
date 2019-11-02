@@ -24,8 +24,8 @@ void InitializeDebugPrints(IN PDRIVER_OBJECT  DriverObject, IN PUNICODE_STRING R
 #ifdef DBG
     bDebugPrint = 1;
     virtioDebugLevel = 0;//0xff;
-    nDebugLevel = TRACE_LEVEL_ERROR;
-    VirtioDebugPrintProc = DebugPrintFuncSerial;
+    nDebugLevel = TRACE_LEVEL_INFORMATION;
+    VirtioDebugPrintProc = DebugPrintFunc;
 #endif
 }
 
@@ -626,7 +626,7 @@ VioGpuDodSystemDisplayWrite(
 #if defined(DBG)
 
 #define RHEL_DEBUG_PORT     ((PUCHAR)0x3F8)
-#define TEMP_BUFFER_SIZE	256
+#define TEMP_BUFFER_SIZE	512
 
 void DebugPrintFuncSerial(const char *format, ...)
 {
