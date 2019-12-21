@@ -11,7 +11,7 @@ int virtioDebugLevel;
 int bDebugPrint;
 
 tDebugPrintFunc VirtioDebugPrintProc;
-
+static KSPIN_LOCK LogLock;
 
 void InitializeDebugPrints(IN PDRIVER_OBJECT  DriverObject, IN PUNICODE_STRING RegistryPath)
 {
@@ -20,7 +20,7 @@ void InitializeDebugPrints(IN PDRIVER_OBJECT  DriverObject, IN PUNICODE_STRING R
     bDebugPrint = 0;
     virtioDebugLevel = 0;
     nDebugLevel = TRACE_LEVEL_NONE;
-
+    KeInitializeSpinLock(&LogLock);
 #ifdef DBG
     bDebugPrint = 1;
     virtioDebugLevel = 0;//0xff;
@@ -648,8 +648,19 @@ void DebugPrintFuncSerial(const char *format, ...)
     }
     if (len)
     {
-        WRITE_PORT_BUFFER_UCHAR(RHEL_DEBUG_PORT, (PUCHAR)buf, (ULONG)len);
-        WRITE_PORT_UCHAR(RHEL_DEBUG_PORT, '\r');
+        KIRQL irql = KeGetCurrentIrql();
+        if (irql <= DISPATCH_LEVEL)
+        {
+            KeAcquireSpinLock(&LogLock, &irql);
+            WRITE_PORT_BUFFER_UCHAR(RHEL_DEBUG_PORT, (PUCHAR)buf, (ULONG)len);
+            WRITE_PORT_UCHAR(RHEL_DEBUG_PORT, '\r');
+            KeReleaseSpinLock(&LogLock, irql);
+        }
+        else
+        {
+            WRITE_PORT_BUFFER_UCHAR(RHEL_DEBUG_PORT, (PUCHAR)buf, (ULONG)len);
+            WRITE_PORT_UCHAR(RHEL_DEBUG_PORT, '\r');
+        }
     }
 }
 
