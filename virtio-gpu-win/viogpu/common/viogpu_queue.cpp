@@ -233,13 +233,16 @@ UINT CtrlQueue::QueueBufferLocked(PGPU_VBUFFER buf)
     ASSERT(outcnt);
     ASSERT((outcnt + incnt) <= 16);
     ret = AddBuf(&sg[0], outcnt, incnt, buf, NULL, 0);
-    Kick();
     if (!ret)
     {
-        ret = NumFree();
+        Kick();
+        DbgPrint(TRACE_LEVEL_VERBOSE, ("<--- %s ret = %d\n", __FUNCTION__, ret));
+    }
+    else
+    {
+        DbgPrint(TRACE_LEVEL_ERROR, ("<--- %s error, %d free\n", __FUNCTION__, NumFree()));
     }
 
-    DbgPrint(TRACE_LEVEL_VERBOSE, ("<--- %s ret = %d\n", __FUNCTION__, ret));
 
     return ret;
 }
