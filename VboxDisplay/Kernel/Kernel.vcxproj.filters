@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Driver Files">
+      <UniqueIdentifier>{8E41214B-6785-4CFE-B992-037D68949A14}</UniqueIdentifier>
+      <Extensions>inf;inv;inx;mof;mc;</Extensions>
+    </Filter>
+    <Filter Include="UnresolvedSymbols">
+      <UniqueIdentifier>{79658212-36c4-4393-b611-a1ee95d823e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="Kernel.inf">
+      <Filter>Driver Files</Filter>
+    </Inf>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VBoxMPCm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPCommon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPCr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPCrUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPHGSMI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPMisc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPRegistry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPShgsmi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPVbva.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPVdma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPVhwa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPVidModes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPVidPn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPVModes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBoxMPWddm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Unresolved-RT.cpp">
+      <Filter>UnresolvedSymbols</Filter>
+    </ClCompile>
+    <ClCompile Include="Unresolved-VBVA.cpp">
+      <Filter>UnresolvedSymbols</Filter>
+    </ClCompile>
+    <ClCompile Include="Unresolved-Vbgl.cpp">
+      <Filter>UnresolvedSymbols</Filter>
+    </ClCompile>
+    <ClCompile Include="Unresolved-HGSMI.cpp">
+      <Filter>UnresolvedSymbols</Filter>
+    </ClCompile>
+    <ClCompile Include="Unresolved-VbVr.cpp">
+      <Filter>UnresolvedSymbols</Filter>
+    </ClCompile>
+    <ClCompile Include="Unresolved-CrSortArr.cpp">
+      <Filter>UnresolvedSymbols</Filter>
+    </ClCompile>
+    <ClCompile Include="Unresolved-Chromium-Pack.cpp">
+      <Filter>UnresolvedSymbols</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VBoxMPCm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPCr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPHGSMI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPMisc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPVbva.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPVdma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPVhwa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPVidPn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPVModes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VBoxMPWddm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\wingdi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

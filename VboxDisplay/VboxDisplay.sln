@@ -1,0 +1,128 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kernel", "Kernel\Kernel.vcxproj", "{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{232806B6-8269-4531-A31F-294C8DDB9745}"
+	ProjectSection(SolutionItems) = preProject
+		Common\-wingdi.h = Common\-wingdi.h
+		Common\cr_pack.h = Common\cr_pack.h
+		Common\cr_sortarray.h = Common\cr_sortarray.h
+		Common\VBoxDispKmt.h = Common\VBoxDispKmt.h
+		Common\VBoxDisplay.h = Common\VBoxDisplay.h
+		Common\VBoxMPCommon.h = Common\VBoxMPCommon.h
+		Common\VBoxMPDevExt.h = Common\VBoxMPDevExt.h
+		Common\VBoxMPIf.h = Common\VBoxMPIf.h
+		Common\VBoxMPUtils.h = Common\VBoxMPUtils.h
+		Common\VBoxVideoLog.h = Common\VBoxVideoLog.h
+		Common\VBoxVideoTools.h = Common\VBoxVideoTools.h
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UserMode", "UserMode\UserMode.vcxproj", "{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VBox", "VBox", "{E9BA9314-6530-4868-8977-7641CDB722DD}"
+	ProjectSection(SolutionItems) = preProject
+		Common\VBox\cdefs.h = Common\VBox\cdefs.h
+		Common\VBox\ostypes.h = Common\VBox\ostypes.h
+		Common\VBox\param.h = Common\VBox\param.h
+		Common\VBox\types.h = Common\VBox\types.h
+		Common\VBox\VBoxCrOpenGLSvc.h = Common\VBox\VBoxCrOpenGLSvc.h
+		Common\VBox\VBoxGuestLib.h = Common\VBox\VBoxGuestLib.h
+		Common\VBox\VMMDevCoreTypes.h = Common\VBox\VMMDevCoreTypes.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mesa", "mesa", "{C942C368-8A54-466F-AABE-EFCB7D19C172}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gl", "gl", "{5DAFEE44-7267-424D-9C28-4C01956FC83B}"
+	ProjectSection(SolutionItems) = preProject
+		mesa\gl\gl.h = mesa\gl\gl.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iprt", "iprt", "{CAE13B98-49DC-4495-9909-EA0D059016AA}"
+	ProjectSection(SolutionItems) = preProject
+		iprt\alloc.h = iprt\alloc.h
+		iprt\asm-amd64-x86.h = iprt\asm-amd64-x86.h
+		iprt\asm.h = iprt\asm.h
+		iprt\assert.h = iprt\assert.h
+		iprt\assertcompile.h = iprt\assertcompile.h
+		iprt\cdefs.h = iprt\cdefs.h
+		iprt\critsect.h = iprt\critsect.h
+		iprt\err.h = iprt\err.h
+		iprt\errcore.h = iprt\errcore.h
+		iprt\list.h = iprt\list.h
+		iprt\log.h = iprt\log.h
+		iprt\mem.h = iprt\mem.h
+		iprt\param.h = iprt\param.h
+		iprt\semaphore.h = iprt\semaphore.h
+		iprt\sg.h = iprt\sg.h
+		iprt\stdarg.h = iprt\stdarg.h
+		iprt\stdint.h = iprt\stdint.h
+		iprt\string.h = iprt\string.h
+		iprt\thread.h = iprt\thread.h
+		iprt\types.h = iprt\types.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wine_new", "Wine_new", "{75B020DF-9280-4BC0-A1FA-DA150E32EDE8}"
+	ProjectSection(SolutionItems) = preProject
+		Wine_new\vbox\VBoxWineEx.h = Wine_new\vbox\VBoxWineEx.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|ARM.ActiveCfg = Debug|ARM
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|ARM.Build.0 = Debug|ARM
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|ARM.Deploy.0 = Debug|ARM
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|ARM64.Build.0 = Debug|ARM64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|x64.ActiveCfg = Debug|x64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|x64.Build.0 = Debug|x64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|x64.Deploy.0 = Debug|x64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|x86.ActiveCfg = Debug|Win32
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|x86.Build.0 = Debug|Win32
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Debug|x86.Deploy.0 = Debug|Win32
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|ARM.ActiveCfg = Release|ARM
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|ARM.Build.0 = Release|ARM
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|ARM.Deploy.0 = Release|ARM
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|ARM64.ActiveCfg = Release|ARM64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|ARM64.Build.0 = Release|ARM64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|ARM64.Deploy.0 = Release|ARM64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|x64.ActiveCfg = Release|x64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|x64.Build.0 = Release|x64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|x64.Deploy.0 = Release|x64
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|x86.ActiveCfg = Release|Win32
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|x86.Build.0 = Release|Win32
+		{BF8DC08F-E172-4F78-94EA-E1A1E97360BE}.Release|x86.Deploy.0 = Release|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Debug|ARM.ActiveCfg = Debug|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Debug|x64.ActiveCfg = Debug|x64
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Debug|x64.Build.0 = Debug|x64
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Debug|x86.ActiveCfg = Debug|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Debug|x86.Build.0 = Debug|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Release|ARM.ActiveCfg = Release|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Release|ARM64.ActiveCfg = Release|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Release|x64.ActiveCfg = Release|x64
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Release|x64.Build.0 = Release|x64
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Release|x86.ActiveCfg = Release|Win32
+		{377087A8-B31B-4032-A9EE-DCE8DA5FB1A1}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E9BA9314-6530-4868-8977-7641CDB722DD} = {232806B6-8269-4531-A31F-294C8DDB9745}
+		{5DAFEE44-7267-424D-9C28-4C01956FC83B} = {C942C368-8A54-466F-AABE-EFCB7D19C172}
+	EndGlobalSection
+EndGlobal
